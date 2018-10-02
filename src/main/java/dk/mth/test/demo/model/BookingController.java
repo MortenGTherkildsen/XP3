@@ -10,7 +10,7 @@ public class BookingController {
     public static List<Booking> bookingList = new ArrayList<>();
 
     public void createBooking(String customerId,String price, int people) {
-
+    
         String newId = "1";
         String id;
 
