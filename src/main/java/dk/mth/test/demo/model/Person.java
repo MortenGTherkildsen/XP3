@@ -1,10 +1,17 @@
 package dk.mth.test.demo.model;
 
+import javax.validation.constraints.NotEmpty;
+
 public class Person {
+
 
     private String name = "";
     private String birthdate = "";
+
+    @NotEmpty
     private String email = "";
+
+    @NotEmpty
     private String password = "";
 
     public Person(String name, String birthdate, String email, String password) {

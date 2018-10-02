@@ -7,6 +7,12 @@ public class Customer extends Person {
     private String customernumber = "";
     private ArrayList<Booking> bookingnumbers = new ArrayList<>();
 
+
+    public Customer(String email, String password){
+        super(email, password);
+    }
+
+
     public Customer(String name, String birthdate, String email, String password, String customernumber, ArrayList<Booking> bookingnumbers) {
         super(name, birthdate, email, password);
         this.customernumber = customernumber;

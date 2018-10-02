@@ -10,22 +10,22 @@
 
     <h1>Create new customer</h1>
 
-    <form method="post">
+    <form method="get" th:object="${person}">
 
         <label for="name">Name</label><br>
-        <input th:value="${person.name}" id="name" type="text" name="name" placeholder="Someone Somebody">
+        <input th:value="${name}" id="name" type="text" name="name" placeholder="Someone Somebody">
         <br>
 
         <label for="birthday">Birthdate</label><br>
-        <input th:value="${person.birthday}" id="birthday" type="text" name="birthday" placeholder="********">
+        <input th:value="${birthday}" id="birthday" type="text" name="birthday" placeholder="********">
         <br>
 
         <label for="email">Email</label><br>
-        <input th:value="${person.email}" id="email" type="text" name="email" placeholder="someone@gmail.com">
+        <input th:value="${email}" id="email" type="text" name="email" placeholder="someone@gmail.com">
         <br>
 
         <label for="password">Password</label><br>
-        <input th:value="${person.password}" id="password" type="text" name="password" placeholder="Password">
+        <input th:value="${password}" id="password" type="text" name="password" placeholder="Password">
         <br>
 
         <button formaction="/createcustomer" type="submit"class="btn  btn-create" value="Create">

@@ -2,15 +2,16 @@ package dk.mth.test.demo.controller;
 
 import dk.mth.test.demo.model.Customer;
 import dk.mth.test.demo.model.Person;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Controller
 public class PersonController {
 
     private List<Person> hl;
@@ -21,18 +22,21 @@ public class PersonController {
 
     @GetMapping(path = "/")
     public String index(Model model){
-        model.addAttribute("personData", hl);
+        model.addAttribute("person", hl);
         return "index";
     }
 
-    @GetMapping("/createcustomer")
-    public String createcustomer(@ModelAttribute Model model) {
-        return "createcustomer";
+    @GetMapping(path = "/createcustomer")
+    public String createcustomer() {
+
+        return "/createcustomer";
     }
 
     @PostMapping("/createcustomer")
-    public String getcreatecustomer(@ModelAttribute Customer customer) {
-        hl.add(customer);
+    public String createcustomer(@RequestParam String email, @RequestParam String password, ModelMap modelMap) {
+
+
+        hl.add(new Customer(email, password));
         return "redirect:/index";
     }
 
