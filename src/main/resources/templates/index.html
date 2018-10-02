@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>AdventureXP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+
+<div class="container">
+
+    <h1>AdventureXP</h1>
+    <p>Personer</p>
+    <div class="btn">
+        <a href="/create">Create</a>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Navn</th>
+            <th>Email</th>
+            <th></th>
+
+        </tr>
+
+        </thead>
+        <tbody>
+        <tr th:each="person : ${personData}">
+            <td th:text="${person.personID}"></td>
+            <td th:text="${person.name}"></td>
+            <td th:text="${person.email}"></td>
+            <td>
+                <a th:href=" ${'/details?id=' + person.studentID} " class="btn btn-details">Detaljer</a>
+                <a th:href=" ${'/edit?id=' + person.studentID} "  class="btn btn-ed">Redigér</a>
+                <a th:href=" ${'/delete?id=' + person.studentID} "  class="btn btn-del">Delete</a>
+
+
+            </td>
+        </tr>
+
+        </tbody></table>
+</div>
+
+</body>
+</html>
