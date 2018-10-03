@@ -33,11 +33,11 @@ public class PersonController {
     }
 
     @PostMapping("/createcustomer")
-    public String createcustomer(@RequestParam String email, @RequestParam String password, ModelMap modelMap) {
+    public String createcustomer(@RequestParam String email, @RequestParam String password, Model model) {
 
-
+        System.out.println(email + " " + password);
         hl.add(new Customer(email, password));
-        return "redirect:/index";
+        return index(model);
     }
 
 }
