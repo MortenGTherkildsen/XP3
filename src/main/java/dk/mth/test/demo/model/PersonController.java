@@ -113,7 +113,7 @@ public class PersonController {
 
     }
 
-    public List<Manager> getActivityManagerList (Object o){
+    public List<Manager> getActivityManagerList (){
 
         List<Manager> activityManagerList = new ArrayList<>();
 
@@ -124,5 +124,6 @@ public class PersonController {
         }
         return activityManagerList;
     }
+
 
 }
