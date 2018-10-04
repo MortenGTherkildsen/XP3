@@ -55,10 +55,9 @@ public class PersonController {
         List<Customer> customerList = new ArrayList<>();
 
         for (Person person:personList) {
-            if(person instanceof Customer){
-                Customer customer = (Customer) person;
-                customerList.add(customer);
-                }
+
+            if(person instanceof Customer){ customerList.add((Customer) person); }
+
         }
         return customerList;
     }
@@ -80,6 +79,18 @@ public class PersonController {
         personList.add(manager);
 
 
+    }
+
+    public List<Manager> getManagerList (){
+
+        List<Manager> managerList = new ArrayList<>();
+
+        for (Person person:personList) {
+
+            if(person instanceof Manager){ managerList.add((Manager) person); }
+
+        }
+        return managerList;
     }
 
 }
