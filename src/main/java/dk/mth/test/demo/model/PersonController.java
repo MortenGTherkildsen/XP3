@@ -91,7 +91,6 @@ public class PersonController {
 
         }
         return managerList;
-
     }
 
     public void createActivityManager(String name, String birthdate, String email, String password){
