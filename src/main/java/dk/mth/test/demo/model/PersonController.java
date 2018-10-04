@@ -11,6 +11,26 @@ public class PersonController {
         personList = new ArrayList<>();
     }
 
+    public static Person getPerson (int arraySlot){
+
+        Person person = personList.get(arraySlot);
+
+        return person;
+    }
+
+    public void deletePerson(String id){
+
+        for (Person person:personList) {
+
+            if (person.getId().equalsIgnoreCase(id)){
+                personList.remove(person);
+                break;
+            }
+
+        }
+
+    }
+
     public void createCustomer(String name, String birthdate, String email, String password){
 
         int genId = 1;
@@ -30,11 +50,47 @@ public class PersonController {
 
     }
 
-    public Person getPerson (int arraySlot){
+    public List<Customer> getCustomerList (){
 
-        Person person = personList.get(arraySlot);
+        List<Customer> customerList = new ArrayList<>();
 
-        return person;
+        for (Person person:personList) {
+
+            if(person instanceof Customer){ customerList.add((Customer) person); }
+
+        }
+        return customerList;
+    }
+
+    public void createManager(String name, String birthdate, String email, String password){
+
+        int genId = 1;
+        String id;
+
+
+        if (personList.size()==0){
+            id="1";} else {
+            genId = Integer.parseInt( personList.get(personList.size()-1).getId())+1;
+            id = ""+genId;
+
+        }
+
+        Manager manager = new Manager(name,birthdate,email,password,id);
+        personList.add(manager);
+
+
+    }
+
+    public List<Manager> getManagerList (){
+
+        List<Manager> managerList = new ArrayList<>();
+
+        for (Person person:personList) {
+
+            if(person instanceof Manager){ managerList.add((Manager) person); }
+
+        }
+        return managerList;
     }
 
 }
