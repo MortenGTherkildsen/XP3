@@ -12,6 +12,10 @@ public class Manager extends Person {
         this.roster = roster;
     }
 
+    public Manager(String name, String age, String email, String password,String id) {
+        super(name, age, email, password,id);
+    }
+
     public ArrayList<Shift> getRoster() {
         return roster;
     }
