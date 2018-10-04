@@ -91,6 +91,38 @@ public class PersonController {
 
         }
         return managerList;
+
+    }
+
+    public void createActivityManager(String name, String birthdate, String email, String password){
+
+        int genId = 1;
+        String id;
+
+
+        if (personList.size()==0){
+            id="1";} else {
+            genId = Integer.parseInt( personList.get(personList.size()-1).getId())+1;
+            id = ""+genId;
+
+        }
+
+        ActivityManager activityManager= new ActivityManager(name,birthdate,email,password,id);
+        personList.add(activityManager);
+
+
+    }
+
+    public List<Manager> getActivityManagerList (Object o){
+
+        List<Manager> activityManagerList = new ArrayList<>();
+
+        for (Person person:personList) {
+
+            if(person instanceof ActivityManager){ activityManagerList.add((ActivityManager) person); }
+
+        }
+        return activityManagerList;
     }
 
 }
