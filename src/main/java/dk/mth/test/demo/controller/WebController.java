@@ -21,7 +21,7 @@ public class WebController {
 
     @GetMapping(path = "/")
     public String index(Model model){
-        model.addAttribute("person", hl);
+        model.addAttribute("personData", hl );
         return "index";
     }
 
@@ -32,11 +32,34 @@ public class WebController {
     }
 
     @PostMapping("/createcustomer")
-    public String createcustomer(@RequestParam String email, @RequestParam String password, Model model) {
+    public String createcustomer(@RequestParam String email, @RequestParam String password, @RequestParam String name, @RequestParam String birthday, Model model) {
 
         System.out.println(email + " " + password);
-        hl.add(new Customer(email, password));
+        hl.add(new Customer(name,birthday, email,password,"+"));
         return index(model);
     }
 
+    @GetMapping(path = "/aktiviteter")
+    public String aktiviteter() {
+
+        return "/aktiviteter";
+    }
+
+    @GetMapping(path = "/login")
+    public String login() {
+
+        return "/login";
+    }
+
+    @GetMapping(path = "/opret")
+    public String opret() {
+
+        return "/opret";
+    }
+
+    @GetMapping(path = "/reservationer")
+    public String reservationer() {
+
+        return "/reservationer";
+    }
 }

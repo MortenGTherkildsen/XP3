@@ -10,7 +10,7 @@
 
     <h1>Create new customer</h1>
 
-    <form method="get" th:object="${person}">
+    <form method="post" action="/createcustomer" th:object="${person}">
 
         <label for="name">Name</label><br>
         <input th:value="${name}" id="name" type="text" name="name" placeholder="Someone Somebody">
@@ -28,7 +28,7 @@
         <input th:value="${password}" id="password" type="text" name="password" placeholder="Password">
         <br>
 
-        <button formaction="/createcustomer" type="submit"class="btn  btn-create" value="Create">
+        <button formaction="/createcustomer" type="submit"class="btn  btn-create" value="Create"></button>
 
     </form>
 

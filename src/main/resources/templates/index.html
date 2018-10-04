@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>AdventureXP</title>
-    <link rel="stylesheet" href="../Static/styleTKKD.css">
+    <link rel="stylesheet" href="../static/styleTKKD.css">
 </head>
 <body>
 <div class="container">
     <div class="containerbtn">
         <h1 class="heading">AdventureXP</h1>
-        <a href="aktiviteter.html">
+        <a href="aktiviteter">
             <div class="button">
                 <p>Se Aktiviteter</p>
             </div></a>
-        <div class="button">
-            <p>Ny Reservation</p>
-        </div>
-        <a href="login.html">
+
+        <a href="login">
+            <div class="button">
+                <p>Ny Reservation</p>
+            </div>
+        </a>
+        <a href="login">
             <div class="button">
                 <p>Find Reservationer</p>
             </div></a>
@@ -45,13 +48,13 @@
         </thead>
         <tbody>
         <tr th:each="person : ${personData}">
-            <td th:text="${person.personID}"></td>
+            <td th:text="${person.id}"></td>
             <td th:text="${person.name}"></td>
             <td th:text="${person.email}"></td>
             <td>
-                <a th:href=" ${'/details?id=' + person.studentID} " class="btn btn-details">Detaljer</a>
-                <a th:href=" ${'/edit?id=' + person.studentID} " class="btn btn-ed">Redigér</a>
-                <a th:href=" ${'/delete?id=' + person.studentID} " class="btn btn-del">Delete</a>
+                <a th:href=" ${'/details?id=' + person.id} " class="btn btn-details">Detaljer</a>
+                <a th:href=" ${'/edit?id=' + person.id} " class="btn btn-ed">Redigér</a>
+                <a th:href=" ${'/delete?id=' + person.id} " class="btn btn-del">Delete</a>
 
             </td>
         </tr>
