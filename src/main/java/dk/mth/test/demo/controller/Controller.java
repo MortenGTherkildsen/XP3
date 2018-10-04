@@ -12,11 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class PersonController {
+public class Controller {
 
     private List<Person> hl;
 
-    public PersonController(){
+
+    public Controller(){
         hl = new ArrayList<>();
     }
 
