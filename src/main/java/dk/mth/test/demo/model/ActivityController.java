@@ -7,7 +7,11 @@ import java.util.List;
 
 public class ActivityController {
 
-    public static List<Activity> activityList = new ArrayList<>();
+    public static List<Activity> activityList;
+
+    public ActivityController () {
+        activityList = new ArrayList<>();
+    }
 
     public void createActivity(String activity, int capacity) {
 

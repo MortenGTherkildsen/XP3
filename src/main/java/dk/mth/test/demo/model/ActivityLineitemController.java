@@ -10,7 +10,12 @@ import java.util.List;
 
 public class ActivityLineitemController {
 
-    public static List<ActivityLineitem> activityLineitemList = new ArrayList<>();
+    public static List<ActivityLineitem> activityLineitemList;
+    private List<Activity> activityList;
+
+    public ActivityLineitemController() {
+        activityLineitemList = new ArrayList<>();
+    }
 
     public boolean createActivity(String activityId, Date dateStart, Date dateEnd) {
 
@@ -47,7 +52,7 @@ public class ActivityLineitemController {
         }
     }
 
-    public ActivityLineitem getActivityLineitem (String id) {
+    public static ActivityLineitem getActivityLineitem (String id) {
 
         for (ActivityLineitem activityLineitem: activityLineitemList) {
             if (activityLineitem.getId().equalsIgnoreCase(id)) {

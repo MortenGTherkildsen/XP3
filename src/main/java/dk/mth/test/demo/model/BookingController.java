@@ -7,7 +7,11 @@ import java.util.List;
 
 public class BookingController {
 
-    public static List<Booking> bookingList = new ArrayList<>();
+    public static List<Booking> bookingList;
+
+    public BookingController () {
+        bookingList = new ArrayList<>();
+    }
 
     public void createBooking(String customerId,String price, int people) {
     
