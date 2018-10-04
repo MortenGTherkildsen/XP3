@@ -1,11 +1,10 @@
 package dk.mth.test.demo.model;
-
 import java.util.ArrayList;
 
 public class Customer extends Person {
 
     private String customernumber = "";
-    private ArrayList<Booking> bookingnumbers = new ArrayList<>();
+    public ArrayList<Booking> bookingnumbers = new ArrayList<>();
 
 
     public Customer(String email, String password){
@@ -13,24 +12,13 @@ public class Customer extends Person {
     }
 
 
-    public Customer(String name, String birthdate, String email, String password, String customernumber, ArrayList<Booking> bookingnumbers) {
-        super(name, birthdate, email, password);
-        this.customernumber = customernumber;
+    public Customer(String name, String birthdate, String email, String password,String id, ArrayList<Booking> bookingnumbers) {
+        super(name, birthdate, email, password,id);
         this.bookingnumbers = bookingnumbers;
     }
 
-    public Customer(String name, String birthdate, String email, String password, String customernumber) {
-        super(name, birthdate, email, password);
-        this.customernumber = customernumber;
-    }
-
-    public Customer(String name, String birthdate, String email, String password, ArrayList<Booking> bookingnumbers) {
-        super(name, birthdate, email, password);
-        this.bookingnumbers = bookingnumbers;
-    }
-
-    public Customer(String name, String birthdate, String email, String password) {
-        super(name, birthdate, email, password);
+    public Customer(String name, String birthdate, String email, String password,String id) {
+        super(name, birthdate, email, password,id);
     }
 
     public String getCustomernumber() {
@@ -42,7 +30,7 @@ public class Customer extends Person {
     }
 
     public ArrayList<Booking> getBookingnumbers() {
-        return bookingnumbers;
+        return this.bookingnumbers;
     }
 
     public void setBookingnumbers(ArrayList<Booking> bookingnumbers) {

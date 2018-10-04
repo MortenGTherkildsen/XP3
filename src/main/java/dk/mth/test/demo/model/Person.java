@@ -1,6 +1,7 @@
 package dk.mth.test.demo.model;
 
 import javax.validation.constraints.NotEmpty;
+import java.util.ArrayList;
 
 public class Person {
 
@@ -13,17 +14,27 @@ public class Person {
 
     @NotEmpty
     private String password = "";
+    private String id = "";
 
-    public Person(String name, String birthdate, String email, String password) {
+    public Person(String name, String birthdate, String email, String password,String id) {
         this.name = name;
         this.birthdate = birthdate;
         this.email = email;
         this.password = password;
+        this.id = id;
     }
 
     public Person(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -59,3 +70,5 @@ public class Person {
     }
 
 }
+
+
