@@ -37,13 +37,11 @@ public class WebController {
     public String createcustomer(@RequestParam String email, @RequestParam String password, @RequestParam String name, @RequestParam String birthday, Model model) {
 
         System.out.println(email + " " + password);
-        hl.add(new Customer(name,birthday, email,password,"+"));
-        user.setEmail(email); user.setPassword(password);
-        if(email.equals(user.getEmail())&&!email.equals("")) {
-            if (password.equals(user.getPassword()) && !password.equals("")) {
-                return index(model);
-            }
+        if(!email.equals("") && !password.equals("")) {
+            hl.add(new Customer(name,birthday, email,password,"+"));
+            return index(model);
         }
+
         return "/createcustomer";
     }
 
@@ -73,14 +71,16 @@ public class WebController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@RequestParam String email, @RequestParam String password){
-        if(email.equals(user.getEmail())&&!email.equals("")){
-            System.out.println("Email match successfully : "+email);
-            if(password.equals(user.getPassword())&&!password.equals("")){
-                System.out.println("password match successfully : "+password);
-                loginstatus = true;
-                System.out.println("User successfully logged in : "+email+" | "+password);
-                return "/reservations";
+    public String login(@RequestParam String email, @RequestParam String password) {
+        for(int i = 0; i < hl.size(); i++){
+            System.out.println(" "+hl.get(i).getEmail());
+            if (email.equals(hl.get(i).getEmail()) && !email.equals("")) {
+                System.out.println("Email match successfully : " + email);
+                if (password.equals(hl.get(i).getPassword()) && !password.equals("")) {
+                    System.out.println("password match successfully : " + password);
+                    loginstatus = true;
+                    System.out.println("User successfully logged in : " + email + " | " + password);
+                    return "/reservations";
 
                 /*
 
@@ -90,18 +90,21 @@ public class WebController {
 
                 */
 
-            }
-            else
-            {
-                System.out.println("password DO NOT match");
-                return "/login";
+                } else {
+                    System.out.println("password DO NOT match");
+                    if(i==hl.size()-1) {
+                        return "/login";
+                    }
+                }
+            }else {
+                System.out.println("email DO NOT match");
+                if(i==hl.size()-1) {
+                    return "/login";
+                }
             }
         }
-        else
-        {
-            System.out.println("email DO NOT match");
-            return "/login";
-        }
+
+        return "/login";
     }
 
     @GetMapping(path = "/opret")
