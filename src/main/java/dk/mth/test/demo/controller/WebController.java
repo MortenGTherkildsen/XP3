@@ -39,17 +39,31 @@ public class WebController {
         System.out.println(email + " " + password);
         hl.add(new Customer(name,birthday, email,password,"+"));
         user.setEmail(email); user.setPassword(password);
-        return index(model);
+        if(email.equals(user.getEmail())&&!email.equals("")) {
+            if (password.equals(user.getPassword()) && !password.equals("")) {
+                return index(model);
+            }
+        }
+        return "/createcustomer";
     }
 
-    @GetMapping(path = "/reservationer")
-    public String reservationer() {
+    @GetMapping(path = "/reservation-menu")
+    public String reservation_menu() {
+
+        return "/reservation-menu";
+    }
+
+    @GetMapping(path = "/reservations")
+    public String reservations() {
         if(loginstatus) {
             System.out.println(" DEBUG : " + user.getEmail() + " " + user.getPassword());
-            return "/reservationer";
+            return "/reservations";
         }
+        else
+        {
         System.out.println(" DEBUG2 : " + user.getEmail() + " " + user.getPassword());
         return "/login";
+        }
     }
 
     @GetMapping(path = "/login")
@@ -66,7 +80,16 @@ public class WebController {
                 System.out.println("password match successfully : "+password);
                 loginstatus = true;
                 System.out.println("User successfully logged in : "+email+" | "+password);
-                return "/reservationer";
+                return "/reservations";
+
+                /*
+
+                    Koden checker kun på den sidste oprettede USER!
+                    Skal man kunne oprette flere reservationer (altså flere logins pr kunde?)
+                    Det her skal vi få snakket om og rettet til ;)
+
+                */
+
             }
             else
             {
@@ -87,10 +110,39 @@ public class WebController {
         return "/opret";
     }
 
-    @GetMapping(path = "/aktiviteter")
-    public String aktiviteter() {
+    @GetMapping(path = "/activities")
+    public String activities() {
 
-        return "/aktiviteter";
+        return "/activities";
     }
 
+    @GetMapping(path = "/gokart")
+    public String gokart() {
+
+        return "/gokart";
+    }
+
+    @GetMapping(path = "/sumo")
+    public String sumo() {
+
+        return "/sumo";
+    }
+
+    @GetMapping(path = "/paintball")
+    public String paintball() {
+
+        return "/paintball";
+    }
+
+    @GetMapping(path = "/minigolf")
+    public String minigolf() {
+
+        return "/minigolf";
+    }
+
+    @GetMapping(path = "/allBookings")
+    public String allBookings() {
+
+        return "/allBookings";
+    }
 }

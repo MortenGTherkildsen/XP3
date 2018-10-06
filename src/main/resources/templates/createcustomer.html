@@ -2,11 +2,16 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Create customer</title>
+    <link rel="stylesheet" href="styleTKKD.css">
 </head>
 <body>
-<div class="container">
+
+<!-- Her bruges thymeleaf til at inkluder en header, som indeholder vores h1 i toppen af siden. Denne th:include line bør sættes in på hver side!-->
+<div th:include="fragments/header :: header"></div>
+<!-- Det gør at hele webapplicationen bliver mere uniform, hvilket giver et utrolig godt simpel look -->
+
+<div class="container center">
 
     <h1>Create new customer</h1>
 
@@ -28,7 +33,7 @@
         <input th:value="${password}" id="password" type="text" name="password" placeholder="Password">
         <br>
 
-        <button formaction="/createcustomer" type="submit"class="btn  btn-create" value="Create"></button>
+        <button formaction="/createcustomer" type="submit" class="btn btn-details" value="Create"></button>
 
     </form>
 

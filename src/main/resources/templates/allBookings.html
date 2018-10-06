@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="../Static/styleTKKD.css">
 </head>
 <body>
+
+<!-- Her bruges thymeleaf til at inkluder en header, som indeholder vores h1 i toppen af siden. Denne th:include line bør sættes in på hver side!-->
+<div th:include="fragments/header :: header"></div>
+<!-- Det gør at hele webapplicationen bliver mere uniform, hvilket giver et utrolig godt simpel look -->
+
 <p>Alle bookinger</p>
 <div class="btn">
     <a href="createcustomer">Create customer</a>

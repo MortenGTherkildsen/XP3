@@ -6,25 +6,47 @@
     <link rel="stylesheet" href="styleTKKD.css">
 </head>
 <body>
-<div class="container">
-    <div class="containerbtn">
-        <h1 class="heading">AdventureXP</h1>
-        <a href="aktiviteter">
-            <div class="button">
-                <p>Se Aktiviteter</p>
-            </div></a>
 
-        <a href="opret">
-            <div class="button">
-                <p>Ny Reservation</p>
+<!-- Her bruges thymeleaf til at inkluder en header, som indeholder vores h1 i toppen af siden. Denne th:include line bør sættes in på hver side!-->
+<div th:include="fragments/header :: header"></div>
+<!-- Det gør at hele webapplicationen bliver mere uniform, hvilket giver et utrolig godt simpel look -->
+
+<div class="container">
+
+    <div id="index_content_top">
+
+        <a href="gokart">
+            <div class="button act" id="act1">
+                <p>1 Go-kart</p>
             </div>
         </a>
-        <a href="reservationer">
-            <div class="button">
-                <p>Find Reservationer</p>
-            </div></a>
+
+        <a href="paintball">
+            <div class="button act" id="act2">
+                <p>2 Paintball</p>
+            </div>
+        </a>
+
     </div>
+
+    <div id="index_content_bot">
+
+        <a href="minigolf">
+            <div class="button act" id="act3">
+                <p>3 Mini-golf</p>
+            </div>
+        </a>
+
+        <a href="sumo">
+            <div class="button act" id="act4">
+                <p>4 Sumo wrestling</p>
+            </div>
+        </a>
+
+    </div>
+
 </div>
+
 <div class="container">
 
     <h1>AdventureXP</h1>

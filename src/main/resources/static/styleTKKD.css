@@ -10,7 +10,7 @@ h1 {
     text-transform: uppercase;
 }
 .container {
-    width: 90%;
+    width: 1030px;
     margin: auto;
 }
 .button {
@@ -32,8 +32,59 @@ h1 {
     color: #fff;
     font-weight:bolder;
 }
+.act {
+    height: 175px;
+    width: 500px;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    color: #fff;
+    text-shadow: 2px 2px #000;
+    margin: auto;
+}
+.act:hover{
+    background-color:#000;
+    opacity:0.8;
+}
+
+#index_content_top{
+    height: 225px;
+    width: 1010px;
+    margin: auto auto 5px auto;
+    display: inline-block;
+}
+
+#index_content_bot{
+    height: 225px;
+    width: 1010px;
+    margin: auto auto 5px auto;
+    display: inline-block;
+}
+
+#act1 {
+    background-image: url("https://i.imgur.com/uu72Ttu.jpg");
+    background-size: 125%;
+    float: left;
+}
+
+#act2 {
+    background-image: url("https://i.imgur.com/AcDOzXZ.jpg");
+    float: right;
+}
+
+#act3 {
+    background-image: url("https://i.imgur.com/evFEvPy.jpg");
+    float: left;
+}
+
+#act4 {
+    background-image: url("https://i.imgur.com/RFiIfHy.jpg");
+    float: right;
+}
+
 .containerbtn {
     width: 20%;
+    height: 600px;
     margin:auto;
 }
 .heading {
@@ -46,6 +97,32 @@ h1 {
     margin-top: 50px;
     margin-bottom:100px;
 }
+
+.center {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 7px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 5px; /* https://www.w3schools.com/css/css3_borders.asp */
+    box-shadow: 1px 1px 1px #888888;
+    -webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
+}
+
+.btn-create {
+    background-color: #4CAF50;
+}
+
 a {
     text-decoration: none;
     color: black;
