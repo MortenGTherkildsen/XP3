@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>gokart</title>
+    <link rel="stylesheet" href="styleTKKD.css">
+</head>
+<body>
+
+<!-- Her bruges thymeleaf til at inkluder en header, som indeholder vores h1 i toppen af siden. Denne th:include line bør sættes in på hver side!-->
+<div th:include="fragments/header :: header"></div>
+<!-- Det gør at hele webapplicationen bliver mere uniform, hvilket giver et utrolig godt simpel look -->
+
+<div class="container">
+    <div id="index_content_top">
+        <h1>Go-kart</h1>
+        <p> something</p>
+    </div>
+    <div id="index_content_bot">
+        <h1>Time & Date?</h1>
+        <p> pick time and date?</p>
+        <a href="reservation-menu">reservation menu</a>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation</title>
+    <link rel="stylesheet" href="styleTKKD.css">
+</head>
+<body>
+
+<!-- Her bruges thymeleaf til at inkluder en header, som indeholder vores h1 i toppen af siden. Denne th:include line bør sættes in på hver side!-->
+<div th:include="fragments/header :: header"></div>
+<!-- Det gør at hele webapplicationen bliver mere uniform, hvilket giver et utrolig godt simpel look -->
+
+<div class="container">
+    <div id="index_content_top">
+        <h1>reservation menu</h1>
+        <br>
+        <!-- Første link skal lige forbi en side hvor de skriver reservations detaljer ind, derefter customer (til user login) -->
+        <a href="createcustomer"><h2>Create new reservation</h2></a>
+        <a href="reservations"><h2>Find existing reservation</h2></a>
+    </div>
+</div>
+
+
+</body>
+</html>
