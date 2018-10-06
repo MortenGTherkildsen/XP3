@@ -4,3 +4,4 @@
 demo\.iml
 
 target/classes/dk/mth/test/demo/
+/.idea/vcs.xml
