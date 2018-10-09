@@ -14,9 +14,9 @@ public class Person {
 
     @NotEmpty
     private String password = "";
-    private String id = "";
+    private int id;
 
-    public Person(String name, String birthdate, String email, String password,String id) {
+    public Person(String name, String birthdate, String email, String password,int id) {
         this.name = name;
         this.birthdate = birthdate;
         this.email = email;
@@ -29,11 +29,11 @@ public class Person {
         this.password = password;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

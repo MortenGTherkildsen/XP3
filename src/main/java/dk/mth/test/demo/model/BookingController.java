@@ -15,9 +15,9 @@ public class BookingController {
 
     public int getNextBookingNumber(){
         int nextBookingNumber;
-        if (bookingList.size() => 0) {
+        if (bookingList.size() > 0) {
             nextBookingNumber = bookingList.size()+1;
-        } else {nextBookingNumber = "1";}
+        } else {nextBookingNumber = 1;}
         return nextBookingNumber;
     }
 

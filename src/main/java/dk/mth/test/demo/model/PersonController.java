@@ -18,31 +18,33 @@ public class PersonController {
         return person;
     }
 
-    public void deletePerson(String id){
+//    public void deletePerson(String id){
+//
+//        for (Person person:personList) {
+//
+//            if (person.getId().equalsIgnoreCase(id)){
+//                personList.remove(person);
+//                break;
+//            }
+//
+//        }
+//
+//    }
 
-        for (Person person:personList) {
-
-            if (person.getId().equalsIgnoreCase(id)){
-                personList.remove(person);
-                break;
-            }
+    public int getNextPersonId(){
+        int nextPersonId;
+        if (personList.size()==0){
+            nextPersonId=1;} else {
+            nextPersonId = personList.get(personList.size()-1).getId()+1;
 
         }
+        return nextPersonId;
 
     }
-
     public void createCustomer(String name, String birthdate, String email, String password){
 
         int genId = 1;
-        String id;
-
-
-        if (personList.size()==0){
-            id="1";} else {
-            genId = Integer.parseInt( personList.get(personList.size()-1).getId())+1;
-            id = ""+genId;
-
-        }
+        int id = getNextPersonId();
 
         Customer customer = new Customer(name,birthdate,email,password,id);
         personList.add(customer);
@@ -65,15 +67,7 @@ public class PersonController {
     public void createManager(String name, String birthdate, String email, String password){
 
         int genId = 1;
-        String id;
-
-
-        if (personList.size()==0){
-            id="1";} else {
-            genId = Integer.parseInt( personList.get(personList.size()-1).getId())+1;
-            id = ""+genId;
-
-        }
+        int id = getNextPersonId();
 
         Manager manager = new Manager(name,birthdate,email,password,id);
         personList.add(manager);
@@ -96,15 +90,7 @@ public class PersonController {
     public void createActivityManager(String name, String birthdate, String email, String password){
 
         int genId = 1;
-        String id;
-
-
-        if (personList.size()==0){
-            id="1";} else {
-            genId = Integer.parseInt( personList.get(personList.size()-1).getId())+1;
-            id = ""+genId;
-
-        }
+        int id = getNextPersonId();
 
         ActivityManager activityManager= new ActivityManager(name,birthdate,email,password,id);
         personList.add(activityManager);

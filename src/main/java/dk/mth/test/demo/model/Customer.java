@@ -12,12 +12,12 @@ public class Customer extends Person {
     }
 
 
-    public Customer(String name, String birthdate, String email, String password,String id, ArrayList<Booking> bookingnumbers) {
+    public Customer(String name, String birthdate, String email, String password,int id, ArrayList<Booking> bookingnumbers) {
         super(name, birthdate, email, password,id);
         this.bookingnumbers = bookingnumbers;
     }
 
-    public Customer(String name, String birthdate, String email, String password,String id) {
+    public Customer(String name, String birthdate, String email, String password,int id) {
         super(name, birthdate, email, password,id);
     }
 
