@@ -102,6 +102,27 @@ public class ActivityLineitemController {
         }
     }
 
+    public List<ActivityLineitem> getListFromDate (String activityId, Date dateFrom, Date dateTo) {
+
+        List<ActivityLineitem> returnList = new ArrayList<>();
+
+        for (ActivityLineitem activityLineItem:activityLineitemList) {
+
+            if (activityLineItem.getDateStart().after(dateFrom) && activityLineItem.getDateStart().before(dateTo)
+                    && activityLineItem.getActivity().equals(ActivityController.getActivity(activityId).getActivity()) ) {
+
+                returnList.add(activityLineItem);
+
+            }
+            if (activityLineItem.getDateStart().after(dateTo)
+                    && activityLineItem.getActivity().equals(ActivityController.getActivity(activityId).getActivity())) {
+                break;
+            }
+        }
+
+        return returnList;
+    }
+
     public boolean addBooking(String bookingId, String lineitemId) {
 
         Booking foundBooking = BookingController.getBooking(bookingId);
@@ -141,6 +162,18 @@ public class ActivityLineitemController {
             }
         }
         return false;
+    }
+
+    public int calculateCapacity(String id) {
+
+        ActivityLineitem activityLineitem = getActivityLineitem(id);
+
+        int finalNumber = activityLineitem.getCapacity();
+
+        for (Booking booking:activityLineitem.bookingList) {
+            finalNumber = finalNumber-booking.getPeople();
+        }
+        return finalNumber;
     }
 
 
