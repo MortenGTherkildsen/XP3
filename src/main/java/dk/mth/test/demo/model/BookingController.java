@@ -13,6 +13,15 @@ public class BookingController {
         bookingList = new ArrayList<>();
     }
 
+    public int getNextBookingNumber(){
+        int nextBookingNumber;
+        if (bookingList.size() => 0) {
+            nextBookingNumber = bookingList.size()+1;
+        } else {nextBookingNumber = "1";}
+        return nextBookingNumber;
+    }
+
+
     public void createBooking(String customerId,String price, int people) {
     
         String newId = "1";
