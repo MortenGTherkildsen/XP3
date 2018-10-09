@@ -15,6 +15,29 @@ public class ActivityLineitemController {
 
     public ActivityLineitemController() {
         activityLineitemList = new ArrayList<>();
+
+        for (Activity activity:ActivityController.activityList) {
+
+            for (int j = 0; j < 30; j++) {
+
+                for (int i = 0; i < 13; i++) {
+
+                    Date date = new Date();
+
+                    date.setHours(7+i);
+                    date.setMinutes(0);
+                    date.setSeconds(0);
+                    date.setDate(date.getDate() + j);
+
+                    Date dateEnd = date;
+                    dateEnd.setHours(date.getHours() + 1);
+
+                    createActivity(activity.getId(), date, dateEnd);
+                }
+
+            }
+        }
+
     }
 
     public boolean createActivity(String activityId, Date dateStart, Date dateEnd) {
@@ -48,7 +71,8 @@ public class ActivityLineitemController {
 
     public void readActivityLineitems() {
         for (ActivityLineitem activityLineitem:activityLineitemList) {
-            System.out.println(activityLineitem.getActivity());
+            //System.out.println(activityLineitem.getActivity());
+            System.out.println(activityLineitem.getDateStart());
         }
     }
 
