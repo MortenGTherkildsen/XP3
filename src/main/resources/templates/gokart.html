@@ -20,17 +20,12 @@
         <h1>Time & Date?</h1>
         <p> pick time and date?</p>
 
-        <tr th:each="activitylineitem : ${activitylineitemlist}">
-            <td th:text="${activitylineitem.ac}"></td>
-            <td th:text="${activitylineitem.customerId}"></td>
-            <td th:text="${activitylineitem.people}"></td>
-            <td th:text="${activitylineitem.price}"></td>
-            <td>
-                <a th:href=" ${'/details?id=' + person.studentID} " class="btn btn-details">Detaljer</a>
-                <a th:href=" ${'/edit?id=' + person.studentID} " class="btn btn-ed">Redigér</a>
-                <a th:href=" ${'/delete?id=' + person.studentID} " class="btn btn-del">Delete</a>
+        <tr th:each="activitylineitem : ${activitylineitemliste}">
+            <td th:text="${activitylineitem.activity}"></td>
+            <td th:text="${activitylineitem.id}"></td>
+            <td th:text="${activitylineitem.capacity}"></td>
+            <td th:text="${activitylineitem.dateStart}"></td>
 
-            </td>
         </tr>
 
         <a href="reservation-menu">reservation menu</a>

@@ -11,7 +11,6 @@ import java.util.List;
 public class ActivityLineitemController {
 
     public static List<ActivityLineitem> activityLineitemList;
-    private List<Activity> activityList;
 
     public ActivityLineitemController() {
         activityLineitemList = new ArrayList<>();

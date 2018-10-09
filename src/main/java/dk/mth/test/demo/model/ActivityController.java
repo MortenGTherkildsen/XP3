@@ -11,6 +11,11 @@ public class ActivityController {
 
     public ActivityController () {
         activityList = new ArrayList<>();
+
+        createActivity("Gocart", 5);
+        createActivity("Sumobrydning", 10);
+        createActivity("Paintball", 15);
+        createActivity("Minigolf", 20);
     }
 
     public void createActivity(String activity, int capacity) {

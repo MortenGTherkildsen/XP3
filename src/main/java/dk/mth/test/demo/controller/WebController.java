@@ -1,7 +1,10 @@
 package dk.mth.test.demo.controller;
 
+import dk.mth.test.demo.model.ActivityController;
+import dk.mth.test.demo.model.ActivityLineitemController;
 import dk.mth.test.demo.model.Customer;
 import dk.mth.test.demo.model.Person;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +16,10 @@ import java.util.List;
 public class WebController {
 
     private List<Person> hl;
+
+    private ActivityController activityController = new ActivityController();
+    private ActivityLineitemController activityLineitemController = new ActivityLineitemController();
+
     private Person user = new Person("","");
     private boolean loginstatus = false;
 
@@ -24,6 +31,7 @@ public class WebController {
     @GetMapping(path = "/")
     public String index(Model model){
         model.addAttribute("personData", hl );
+
         return "index";
     }
 
@@ -120,7 +128,8 @@ public class WebController {
     }
 
     @GetMapping(path = "/gokart")
-    public String gokart() {
+    public String gokart(Model model) {
+        model.addAttribute("activitylineitemliste", ActivityLineitemController.activityLineitemList);
 
         return "/gokart";
     }
