@@ -22,7 +22,7 @@ public class BookingController {
     }
 
 
-    public void createBooking(String customerId,String price, int people) {
+    public static void createBooking(String customerId,String price, int people) {
     
         String newId = "1";
         String id;
