@@ -102,10 +102,39 @@ public class ActivityLineitemController {
         }
     }
 
+    public List<ActivityLineitem> getListFromDate (String activityId, Date dateFrom, Date dateTo) {
+
+        List<ActivityLineitem> returnList = new ArrayList<>();
+
+        for (ActivityLineitem activityLineItem:activityLineitemList) {
+
+            if (activityLineItem.getDateStart().after(dateFrom) && activityLineItem.getDateStart().before(dateTo)
+                    && activityLineItem.getActivity().equals(ActivityController.getActivity(activityId).getActivity()) ) {
+
+                returnList.add(activityLineItem);
+
+            }
+            if (activityLineItem.getDateStart().after(dateTo)
+                    && activityLineItem.getActivity().equals(ActivityController.getActivity(activityId).getActivity())) {
+                break;
+            }
+        }
+
+        return returnList;
+    }
+
     public boolean addBooking(String bookingId, String lineitemId) {
 
-        Booking foundBooking = BookingController.getBooking(bookingId);
-        ActivityLineitem activityLineitem = getActivityLineitem(lineitemId);
+        Booking foundBooking = null;
+        ActivityLineitem activityLineitem = null;
+
+        try{
+        foundBooking = BookingController.getBooking(bookingId);}
+        catch (NullPointerException e){}
+
+        try{
+        activityLineitem = getActivityLineitem(lineitemId);}
+        catch (NullPointerException e) {}
 
         if (foundBooking == null || activityLineitem == null) {return false;}
 
@@ -142,6 +171,36 @@ public class ActivityLineitemController {
         }
         return false;
     }
+    
+    public int calculateCapacity(String id) {
 
+        ActivityLineitem activityLineitem = getActivityLineitem(id);
+
+        int finalNumber = activityLineitem.getCapacity();
+
+        for (Booking booking:activityLineitem.bookingList) {
+            finalNumber = finalNumber-booking.getPeople();
+        }
+        return finalNumber;
+    }
+
+    public void createBookingFinal (String bookingId,String lineitemId,String customerId,String price,int people,Date dateStart,Date dateEnd){
+
+        if(!addBooking(bookingId,lineitemId)){
+
+            if(BookingController.getBooking(bookingId)== null){
+                BookingController.createBooking(customerId,price,people);
+            }
+
+            if(getActivityLineitem(lineitemId) == null){
+                createActivity(lineitemId,dateStart,dateEnd);
+            }
+
+            addBooking(bookingId,lineitemId);
+
+        }
+
+
+    }
 
 }

@@ -15,14 +15,16 @@ public class BookingController {
 
     public int getNextBookingNumber(){
         int nextBookingNumber;
+
         if (bookingList.size() > 0) {
+
             nextBookingNumber = bookingList.size()+1;
         } else {nextBookingNumber = 1;}
         return nextBookingNumber;
     }
 
 
-    public void createBooking(String customerId,String price, int people) {
+    public static void createBooking(String customerId,String price, int people) {
     
         String newId = "1";
         String id;
@@ -40,7 +42,7 @@ public class BookingController {
         bookingList.add(new Booking(newId,customerId,price,people));
     }
 
-    public void createBooking(Booking booking) {
+    public static void createBooking(Booking booking) {
 
         String newId = "1";
         String id;
