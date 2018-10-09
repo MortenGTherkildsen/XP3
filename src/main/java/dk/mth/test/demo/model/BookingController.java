@@ -31,6 +31,24 @@ public class BookingController {
         bookingList.add(new Booking(newId,customerId,price,people));
     }
 
+    public void createBooking(Booking booking) {
+
+        String newId = "1";
+        String id;
+
+        if (bookingList.size() > 0) {
+            id = bookingList.get(bookingList.size()-1).getId();
+        } else {id = "0";}
+
+        if (!id.equalsIgnoreCase("0")) {
+            int intID = Integer.parseInt(id);
+            intID++;
+            newId = "" + intID;
+        }
+        booking.setId(newId);
+        bookingList.add(booking);
+    }
+
     public void readActivities() {
         for (Booking booking:bookingList) {
             System.out.println(booking.getId());
