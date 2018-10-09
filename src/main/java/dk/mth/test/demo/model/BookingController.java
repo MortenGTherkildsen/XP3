@@ -40,7 +40,7 @@ public class BookingController {
         bookingList.add(new Booking(newId,customerId,price,people));
     }
 
-    public void createBooking(Booking booking) {
+    public static void createBooking(Booking booking) {
 
         String newId = "1";
         String id;

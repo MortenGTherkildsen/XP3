@@ -104,8 +104,16 @@ public class ActivityLineitemController {
 
     public boolean addBooking(String bookingId, String lineitemId) {
 
-        Booking foundBooking = BookingController.getBooking(bookingId);
-        ActivityLineitem activityLineitem = getActivityLineitem(lineitemId);
+        Booking foundBooking = null;
+        ActivityLineitem activityLineitem = null;
+
+        try{
+        foundBooking = BookingController.getBooking(bookingId);}
+        catch (NullPointerException e){}
+
+        try{
+        activityLineitem = getActivityLineitem(lineitemId);}
+        catch (NullPointerException e) {}
 
         if (foundBooking == null || activityLineitem == null) {return false;}
 
@@ -143,5 +151,23 @@ public class ActivityLineitemController {
         return false;
     }
 
+    public void createBookingFinal (String bookingId,String lineitemId,String customerId,String price,int people,Date dateStart,Date dateEnd){
+
+        if(!addBooking(bookingId,lineitemId)){
+
+            if(BookingController.getBooking(bookingId)== null){
+                BookingController.createBooking(customerId,price,people);
+            }
+
+            if(getActivityLineitem(lineitemId) == null){
+                createActivity(lineitemId,dateStart,dateEnd);
+            }
+
+            addBooking(bookingId,lineitemId);
+
+        }
+
+
+    }
 
 }
