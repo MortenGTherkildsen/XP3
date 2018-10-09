@@ -14,27 +14,30 @@
 <div class="container">
     <div id="index_content_top">
         <h1>Go-kart</h1>
-        <p> something</p>
+        <p> Go-kart related information goes here... </p>
+        <p> Go-kart related information goes here... </p>
+        <p> Go-kart related information goes here... </p>
     </div>
     <div id="index_content_bot">
-        <h1>Time & Date?</h1>
-        <p> pick time and date?</p>
-
+        <h1>Time & Date</h1>
+        <p> pick the time & date and enter amount of participants</p>
+        <a href="reservation-menu"><p>Already have a reservation? Click here to <u>login</u></p></a>
+        <br>
 
         <form method="post" action="/gokart" th:object="${booking}">
         <tr th:each="activitylineitem : ${activitylineitemdate}">
+            <td>Activity: </td>
             <td th:text="${activitylineitem.activity}"></td>
-            <td th:text="${activitylineitem.id}"></td>
+            <td>- Space left: </td>
             <td th:text="${activitylineitem.capacity}"></td>
             <td th:text="${activitylineitem.dateStart}"></td>
-            <td><input th:value="${people}" id="people" type="number" name="people" placeholder="Amount of people"></td>
+            <td><input th:value="${people}" id="people" type="number" name="people" placeholder="Amount of participants"></td>
+            <td> <button formaction="/gokart" type="submit" class="btn" value="Create"></button> </td>
             <br>
-            <td> <button formaction="/gokart" type="submit" class="btn btn-details" value="Create"></button> </td>
-            <br>
+            <p></p>
         </tr>
         </form>
 
-        <a href="reservation-menu">reservation menu</a>
     </div>
 </div>
 

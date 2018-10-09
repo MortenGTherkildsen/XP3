@@ -20,9 +20,9 @@ public class WebController {
     private ActivityController activityController = new ActivityController();
     private ActivityLineitemController activityLineitemController = new ActivityLineitemController();
 
+    private Booking booking = new Booking(0,0,"",0);
     private Person user = new Person("","");
     private boolean loginstatus = false;
-    private Booking booking = new Booking(0,0,"",0);
 
 
     public WebController(){
@@ -32,7 +32,6 @@ public class WebController {
     @GetMapping(path = "/")
     public String index(Model model){
         model.addAttribute("personData", hl );
-        booking = new Booking(0,0,"",0);
         return "index";
     }
 
@@ -64,7 +63,8 @@ public class WebController {
     }
 
     @GetMapping(path = "/reservations")
-    public String reservations() {
+    public String reservations(Model model) {
+        model.addAttribute("bookings", booking );
         if(loginstatus) {
             System.out.println(" DEBUG : " + user.getEmail() + " " + user.getPassword());
             return "/reservations";
@@ -83,7 +83,7 @@ public class WebController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@RequestParam String email, @RequestParam String password) {
+    public String login(@RequestParam String email, @RequestParam String password, Model model) {
         for(int i = 0; i < hl.size(); i++){
             System.out.println(" "+hl.get(i).getEmail());
             if (email.equals(hl.get(i).getEmail()) && !email.equals("")) {
@@ -92,6 +92,7 @@ public class WebController {
                     System.out.println("password match successfully : " + password);
                     loginstatus = true;
                     System.out.println("User successfully logged in : " + email + " | " + password);
+                    model.addAttribute("bookings", booking );
                     return "/reservations";
 
                 /*

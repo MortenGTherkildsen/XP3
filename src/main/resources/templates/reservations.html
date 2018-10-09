@@ -5,37 +5,32 @@
     <title>AdventureXP - Bookings</title>
     <link rel="stylesheet" href="styleTKKD.css">
 </head>
-<body>
-<p>Alle bookinger</p>
-<div class="btn">
-    <a href="createcustomer">Create customer</a>
-    <!--<form method="get">-->
-    <!--<button type="submit" formaction="/createcustomer" class="btn" >Create new customer</button>-->
-    <!--</form>-->
-</div>
-<table>
+
+<!-- Her bruges thymeleaf til at inkluder en header, som indeholder vores h1 i toppen af siden. Denne th:include line bør sættes in på hver side!-->
+<div th:include="fragments/header :: header"></div>
+<!-- Det gør at hele webapplicationen bliver mere uniform, hvilket giver et utrolig godt simpel look -->
+
+<body class="center">
+<h2>Bookings</h2>
+<table width="50%" class="center">
     <thead>
     <tr>
         <th>Booking-nr.</th>
-        <th>Kunde-nr.</th>
-        <th>Antal</th>
-        <th>Pris</th>
+        <th>Customer-nr.</th>
+        <th>Participants</th>
+        <th>Price</th>
+        <th>Activity</th>
 
     </tr>
 
     </thead>
     <tbody>
-    <tr th:each="booking : ${bookingListe}">
+    <tr th:each="booking : ${bookings}">
         <td th:text="${booking.id}"></td>
         <td th:text="${booking.customerId}"></td>
         <td th:text="${booking.people}"></td>
         <td th:text="${booking.price}"></td>
-        <td>
-            <a th:href=" ${'/details?id=' + person.studentID} " class="btn btn-details">Detaljer</a>
-            <a th:href=" ${'/edit?id=' + person.studentID} " class="btn btn-ed">Redigér</a>
-            <a th:href=" ${'/delete?id=' + person.studentID} " class="btn btn-del">Delete</a>
-
-        </td>
+        <td>Gokart</td>
     </tr>
 
     </tbody>
