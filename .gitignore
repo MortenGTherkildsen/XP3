@@ -3,5 +3,5 @@
 
 demo\.iml
 
-target/classes/dk/mth/test/demo/
+target/
 /.idea/vcs.xml
