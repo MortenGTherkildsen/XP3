@@ -123,6 +123,10 @@ h1 {
     background-color: #4CAF50;
 }
 
+.btn-details {
+    background-color: #555555;
+}
+
 a {
     text-decoration: none;
     color: black;
