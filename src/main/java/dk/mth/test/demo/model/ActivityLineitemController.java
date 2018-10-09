@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ActivityLineitemController {
 
-    public static List<ActivityLineitem> activityLineitemList;
+    public List<ActivityLineitem> activityLineitemList;
 
     public ActivityLineitemController() {
         activityLineitemList = new ArrayList<>();
@@ -41,8 +41,8 @@ public class ActivityLineitemController {
 
     public boolean createActivity(String activityId, Date dateStart, Date dateEnd) {
 
-        String newId = "1";
-        String id;
+        int newId = 1;
+        int id;
 
         Activity activityVar = ActivityController.getActivity(activityId);
 
@@ -54,12 +54,10 @@ public class ActivityLineitemController {
 
         if (activityLineitemList.size() > 0) {
             id = activityLineitemList.get(activityLineitemList.size()-1).getId();
-        } else {id = "0";}
+        } else {id = 0;}
 
-        if (!id.equalsIgnoreCase("0")) {
-            int intID = Integer.parseInt(id);
-            intID++;
-            newId = "" + intID;
+        if (id != 0) {
+            id++;
         }
 
 
@@ -75,10 +73,10 @@ public class ActivityLineitemController {
         }
     }
 
-    public static ActivityLineitem getActivityLineitem (String id) {
+    public  ActivityLineitem getActivityLineitem (int id) {
 
         for (ActivityLineitem activityLineitem: activityLineitemList) {
-            if (activityLineitem.getId().equalsIgnoreCase(id)) {
+            if (activityLineitem.getId() == id) {
                 return activityLineitem;
             }
         }
@@ -91,11 +89,11 @@ public class ActivityLineitemController {
     }
     */
 
-    public void deleteActivityLineItem(String id) {
+    public void deleteActivityLineItem(int id) {
 
         for (ActivityLineitem activityLineitem:activityLineitemList) {
 
-            if (activityLineitem.getId().equalsIgnoreCase(id)) {
+            if (activityLineitem.getId() == id) {
                 activityLineitemList.remove(activityLineitem);
                 break;
             }
@@ -123,7 +121,7 @@ public class ActivityLineitemController {
         return returnList;
     }
 
-    public boolean addBooking(String bookingId, String lineitemId) {
+    /*public boolean addBooking(int bookingId, int lineitemId) {
 
         Booking foundBooking = null;
         ActivityLineitem activityLineitem = null;
@@ -140,12 +138,12 @@ public class ActivityLineitemController {
 
         activityLineitem.bookingList.add(foundBooking);
         return true;
-    }
+    }*/
 
-    public void readBookings(String lineitemId) {
+    public void readBookings(int lineitemId) {
 
         for (ActivityLineitem activityLineitem:activityLineitemList) {
-            if (activityLineitem.getId().equalsIgnoreCase(lineitemId)) {
+            if (activityLineitem.getId() == lineitemId) {
                 for (Booking booking:activityLineitem.bookingList) {
                     System.out.println(booking.getId());
                 }
@@ -158,13 +156,13 @@ public class ActivityLineitemController {
         //hello
     }
 
-    public boolean deleteBooking(String bookingId, String lineitemId) {
+    public boolean deleteBooking(int bookingId, int lineitemId) {
 
         ActivityLineitem activityLineitem = getActivityLineitem(lineitemId);
 
         for (Booking booking:activityLineitem.bookingList) {
 
-            if (booking.getId().equalsIgnoreCase(bookingId)) {
+            if (booking.getId() == bookingId) {
                 activityLineitem.bookingList.remove(booking);
                 return true;
             }
@@ -172,7 +170,7 @@ public class ActivityLineitemController {
         return false;
     }
     
-    public int calculateCapacity(String id) {
+    public int calculateCapacity(int id) {
 
         ActivityLineitem activityLineitem = getActivityLineitem(id);
 
@@ -182,25 +180,6 @@ public class ActivityLineitemController {
             finalNumber = finalNumber-booking.getPeople();
         }
         return finalNumber;
-    }
-
-    public void createBookingFinal (String bookingId,String lineitemId,String customerId,String price,int people,Date dateStart,Date dateEnd){
-
-        if(!addBooking(bookingId,lineitemId)){
-
-            if(BookingController.getBooking(bookingId)== null){
-                BookingController.createBooking(customerId,price,people);
-            }
-
-            if(getActivityLineitem(lineitemId) == null){
-                createActivity(lineitemId,dateStart,dateEnd);
-            }
-
-            addBooking(bookingId,lineitemId);
-
-        }
-
-
     }
 
 }

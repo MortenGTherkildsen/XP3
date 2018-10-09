@@ -2,31 +2,31 @@ package dk.mth.test.demo.model;
 
 public class Booking {
 
-    private String id;
-    private String customerId;
+    private int id;
+    private int customerId;
     private String price;
     private int people; //Number of people who are booking
 
-    public Booking(String id, String customerId, String price, int people) {
+    public Booking(int id, int customerId, String price, int people) {
         this.id = id;
         this.customerId = customerId;
         this.price = price;
         this.people = people;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getCustomerId() {
+    public int getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
 

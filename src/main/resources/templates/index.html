@@ -73,12 +73,6 @@
             <td th:text="${person.id}"></td>
             <td th:text="${person.name}"></td>
             <td th:text="${person.email}"></td>
-            <td>
-                <a th:href=" ${'/details?id=' + person.id} " class="btn btn-details">Detaljer</a>
-                <a th:href=" ${'/edit?id=' + person.id} " class="btn btn-ed">Redigér</a>
-                <a th:href=" ${'/delete?id=' + person.id} " class="btn btn-del">Delete</a>
-
-            </td>
         </tr>
 
         </tbody>

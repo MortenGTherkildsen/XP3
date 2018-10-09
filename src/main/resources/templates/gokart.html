@@ -20,13 +20,19 @@
         <h1>Time & Date?</h1>
         <p> pick time and date?</p>
 
-        <tr th:each="activitylineitem : ${activitylineitemliste}">
+
+        <form method="post" action="/gokart" th:object="${booking}">
+        <tr th:each="activitylineitem : ${activitylineitemdate}">
             <td th:text="${activitylineitem.activity}"></td>
             <td th:text="${activitylineitem.id}"></td>
             <td th:text="${activitylineitem.capacity}"></td>
             <td th:text="${activitylineitem.dateStart}"></td>
-
+            <td><input th:value="${people}" id="people" type="number" name="people" placeholder="Amount of people"></td>
+            <br>
+            <td> <button formaction="/gokart" type="submit" class="btn btn-details" value="Create"></button> </td>
+            <br>
         </tr>
+        </form>
 
         <a href="reservation-menu">reservation menu</a>
     </div>

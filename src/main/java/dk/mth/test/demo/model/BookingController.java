@@ -7,7 +7,7 @@ import java.util.List;
 
 public class BookingController {
 
-    public static List<Booking> bookingList;
+    public List<Booking> bookingList;
 
     public BookingController () {
         bookingList = new ArrayList<>();
@@ -24,40 +24,12 @@ public class BookingController {
     }
 
 
-    public static void createBooking(String customerId,String price, int people) {
-    
-        String newId = "1";
-        String id;
+    public void createBooking(int customerId, String price, int people) {
 
-        if (bookingList.size() > 0) {
-            id = bookingList.get(bookingList.size()-1).getId();
-        } else {id = "0";}
+        int id = getNextBookingNumber();
 
 
-        if (!id.equalsIgnoreCase("0")) {
-            int intID = Integer.parseInt(id);
-            intID++;
-            newId = "" + intID;
-        }
-        bookingList.add(new Booking(newId,customerId,price,people));
-    }
-
-    public static void createBooking(Booking booking) {
-
-        String newId = "1";
-        String id;
-
-        if (bookingList.size() > 0) {
-            id = bookingList.get(bookingList.size()-1).getId();
-        } else {id = "0";}
-
-        if (!id.equalsIgnoreCase("0")) {
-            int intID = Integer.parseInt(id);
-            intID++;
-            newId = "" + intID;
-        }
-        booking.setId(newId);
-        bookingList.add(booking);
+        bookingList.add(new Booking(id,customerId,price,people));
     }
 
     public void readActivities() {
@@ -66,24 +38,24 @@ public class BookingController {
         }
     }
 
-    public static Booking getBooking (String id) {
+    public  Booking getBooking(int id) {
 
         for (Booking booking: bookingList) {
-            if (booking.getId().equalsIgnoreCase(id)) {
+            if (booking.getId() == id) {
                 return booking;
             }
         }
         return null;
     }
 
-    public void updateBooking(String booking, int capacity, String id) {
+    public void updateBooking(String booking, int capacity, int id) {
         //insert code here
     }
 
-    public void deleteBooking(String id) {
+    public void deleteBooking(int id) {
 
         for (Booking booking:bookingList) {
-            if (booking.getId().equalsIgnoreCase(id)) {
+            if (booking.getId() == id) {
                 bookingList.remove(booking);
                 break;
             }

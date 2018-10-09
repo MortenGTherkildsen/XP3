@@ -7,14 +7,14 @@ import java.util.List;
 public class ActivityLineitem {
 
 
-    private String id;
+    private int id;
     private String activity;
     private int capacity;
     private Date dateStart;
     private Date dateEnd;
     public List<Booking> bookingList = new ArrayList();
 
-    public ActivityLineitem(String id, String activity, int capacity, Date dateStart, Date dateEnd) {
+    public ActivityLineitem(int id, String activity, int capacity, Date dateStart, Date dateEnd) {
         this.id = id;
         this.activity = activity;
         this.capacity = capacity;
@@ -22,11 +22,11 @@ public class ActivityLineitem {
         this.dateEnd = dateEnd;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
